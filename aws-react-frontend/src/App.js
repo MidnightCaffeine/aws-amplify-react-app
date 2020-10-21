@@ -77,16 +77,24 @@ class App extends Component {
               onClick={this.toggleListTodos}
               style={{ marginBottom: "1rem" }}
             >
-              List TODOS
+              {this.state.isListTodosOpen ? "Hide Todos" : "Show Todos"}
             </Button>
             <Collapse isOpen={this.state.isListTodosOpen}>
               <ListGroup>
                 {todoRaw.map((todo) => {
+                  const fullDate = new Date(todo.timestamp);
+                  const date =
+                    fullDate.getDate() +
+                    "/" +
+                    (fullDate.getMonth() + 1) +
+                    "/" +
+                    fullDate.getFullYear();
                   return (
                     <Row style={{ padding: "5px" }}>
                       <Col>
                         <ListGroupItem key={todo.key}>
-                          {todo.value}
+                          <Badge color="secondary">{`${date}`}</Badge>
+                          <h3>{todo.value}</h3>
                         </ListGroupItem>
                         <Button color="success" key={todo.key}>
                           Completed
