@@ -15,6 +15,8 @@ import {
   InputGroupAddon,
   InputGroupText,
   Badge,
+  Card,
+  CardBody,
 } from "reactstrap";
 
 class App extends Component {
@@ -22,13 +24,20 @@ class App extends Component {
     super(props);
 
     this.toggle = this.toggle.bind(this);
+    this.toggleListTodos = this.toggleListTodos.bind(this);
     this.state = {
       isOpen: false,
+      isListTodosOpen: false,
     };
   }
   toggle() {
     this.setState({
       isOpen: !this.state.isOpen,
+    });
+  }
+  toggleListTodos() {
+    this.setState({
+      isListTodosOpen: !this.state.isListTodosOpen,
     });
   }
   render() {
@@ -60,6 +69,25 @@ class App extends Component {
                 </InputGroup>
               </Col>
             </Row>
+          </Container>
+          <Container style={{paddingTop: "20px"}}>
+            <Button
+              color="primary"
+              onClick={this.toggleListTodos}
+              style={{ marginBottom: "1rem" }}
+            >
+              List TODOS
+            </Button>
+            <Collapse isOpen={this.state.isListTodosOpen}>
+              <Card>
+                <CardBody>
+                  Anim pariatur cliche reprehenderit, enim eiusmod high life
+                  accusamus terry richardson ad squid. Nihil anim keffiyeh
+                  helvetica, craft beer labore wes anderson cred nesciunt
+                  sapiente ea proident.
+                </CardBody>
+              </Card>
+            </Collapse>
           </Container>
         </Jumbotron>
       </div>
