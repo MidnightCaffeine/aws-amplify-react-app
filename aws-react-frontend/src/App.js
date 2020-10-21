@@ -15,9 +15,10 @@ import {
   InputGroupAddon,
   InputGroupText,
   Badge,
-  Card,
-  CardBody,
+  ListGroup,
+  ListGroupItem,
 } from "reactstrap";
+import { todoRaw } from "./raw/todoUtils";
 
 class App extends Component {
   constructor(props) {
@@ -70,7 +71,7 @@ class App extends Component {
               </Col>
             </Row>
           </Container>
-          <Container style={{paddingTop: "20px"}}>
+          <Container style={{ paddingTop: "20px" }}>
             <Button
               color="primary"
               onClick={this.toggleListTodos}
@@ -79,14 +80,25 @@ class App extends Component {
               List TODOS
             </Button>
             <Collapse isOpen={this.state.isListTodosOpen}>
-              <Card>
-                <CardBody>
-                  Anim pariatur cliche reprehenderit, enim eiusmod high life
-                  accusamus terry richardson ad squid. Nihil anim keffiyeh
-                  helvetica, craft beer labore wes anderson cred nesciunt
-                  sapiente ea proident.
-                </CardBody>
-              </Card>
+              <ListGroup>
+                {todoRaw.map((todo) => {
+                  return (
+                    <Row style={{padding: "5px"}}>
+                      <Col>
+                        <ListGroupItem key={todo.key}>
+                          {todo.value}
+                        </ListGroupItem>
+                        <Button color="success" key={todo.key}>
+                          Completed
+                        </Button>
+                        <Button color="info" key={todo.key}>
+                          Update
+                        </Button>
+                      </Col>
+                    </Row>
+                  );
+                })}
+              </ListGroup>
             </Collapse>
           </Container>
         </Jumbotron>
