@@ -83,7 +83,7 @@ class App extends Component {
               <ListGroup>
                 {todoRaw.map((todo) => {
                   return (
-                    <Row style={{padding: "5px"}}>
+                    <Row style={{ padding: "5px" }}>
                       <Col>
                         <ListGroupItem key={todo.key}>
                           {todo.value}
