@@ -94,12 +94,12 @@ class App extends Component {
                       <Col>
                         <ListGroupItem key={todo.key}>
                           <Badge color="secondary">{`${date}`}</Badge>
-                          <h3>{todo.value}</h3>
+                          <h4>{todo.value}</h4>
                         </ListGroupItem>
-                        <Button color="success" key={todo.key}>
+                        <Button color="success">
                           Completed
                         </Button>
-                        <Button color="info" key={todo.key}>
+                        <Button color="info">
                           Update
                         </Button>
                       </Col>
